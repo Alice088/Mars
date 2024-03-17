@@ -15,12 +15,16 @@ Mars is a service made by enthusiasts for self-improvement, it helps you turn li
     <li> PHP (Laravel)
     <li> Docker
     <li> Grafana
+    <li> own telegrag api server
     <li> MySQL
     <li> clickHouse
+    <li> redis
     <li> gRPC
     <li> Telegram bot API
     <li> Railway(hosting)
     <li> Gemini API
+    <li> TTD
+    <li> PHPunit
   </ul>  
 
 ## Authors  🧑‍🤝‍🧑
