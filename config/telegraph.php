@@ -20,7 +20,7 @@ return [
          * Sets the webhook URL that will be exposed by the server,
          * this can be customized or entirely disabled (by setting it to NULL)
          */
-        'url'                     => env("APP_URL"),
+        'url'                     => '/telegraph/{token}/webhook',
 
         /*
          * Sets the handler to be used when Telegraph
@@ -28,7 +28,7 @@ return [
          *
          * For reference, see https://defstudio.github.io/telegraph/webhooks/overview
          */
-        'handler'                 => App\Http\Telegraph\Start::class,
+        'handler'                 => \App\Http\Telegraph\Commands\Start::class,
 
         /*
          * Middleware to be applied to the webhook route
@@ -41,7 +41,7 @@ return [
          *
          * For reference, see https://core.telegram.org/bots/api#using-a-local-bot-api-server
          */
-        'domain'                  => env("SERVER_URL"),
+        // 'domain' => 'http://my.custom.domain',
 
         /*
          * If enabled, unknown webhook commands are
@@ -53,7 +53,7 @@ return [
          * If enabled, Telegraph dumps received
          * webhook messages to logs
          */
-        'debug'                   => env("APP_DEBUG", false),
+        'debug'                   => env("APP_DEBUG"),
     ],
 
 
@@ -82,9 +82,8 @@ return [
      * Chat model must be or extend `DefStudio\Telegraph\Models\TelegraphChat::class`
      */
     'models'             => [
-        'bot'     => DefStudio\Telegraph\Models\TelegraphBot::class,
-        'MarsBot' => App\Models\Bots\MarsBot::class,
-        'chat'    => DefStudio\Telegraph\Models\TelegraphChat::class,
+        'bot'  => DefStudio\Telegraph\Models\TelegraphBot::class,
+        'chat' => DefStudio\Telegraph\Models\TelegraphChat::class,
     ],
 
     'storage'            => [

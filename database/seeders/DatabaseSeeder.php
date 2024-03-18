@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use DB;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,11 +13,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        DB::beginTransaction();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        for ($i = 0; $i < 50; $i++) {
+            DB::table('users')->insert([
+                'user_id'    => fake()->numberBetween(),
+                'user_level' => fake()->numberBetween(1, 999),
+            ]);
+        }
+
+        DB::commit();
     }
 }
